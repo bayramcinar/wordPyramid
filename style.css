@@ -1,0 +1,210 @@
+html, body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+#basla{
+    width: 160px !important;
+    height: 50px;
+    font-size: 20px;
+}
+body{
+    background-color: #2B2A4C !important;
+    margin: 0;
+    padding: 0;
+}
+  
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: #2B2A4C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#five,#four,#three{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}
+#answer{
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#matrix
+{
+    width: 350px;
+    height: 350px;
+    margin: 20px;
+    border: 4px solid #fff;
+    border-radius: 10px;
+    background-color: #068DA9;
+}
+#matrix .list{
+    background: #B31312;
+    border-radius: 10px;
+    height: 2.5em;
+    width: 2.5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    border: #F5EFE7 2px solid;
+}
+#five .list,
+#three .list,
+#four .list{
+    border-radius: 10px;
+    background: #1B9C85;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    justify-content: center;
+    text-align: center;
+}
+#five .kutu:first-child,
+#four .kutu:first-child,
+#three .kutu:first-child{
+    border-radius: 10px;
+    background: #1B9C85;
+    height: 50px !important;
+    width: 50px !important;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    justify-content: center;
+    text-align: center;
+}
+.col-4{
+    padding: 0 !important;
+}
+.kutu
+{
+    border-radius: 10px;
+    border: 2px solid #fff;
+    height: 50px !important;
+    width: 50px !important;
+    padding: 0 !important;
+}
+.title{
+    color: #F5EFE7;
+    letter-spacing: 1px;
+    margin-top: 150px;
+}
+.resimler {
+    position: relative;
+}
+
+.resimler img {
+    position: absolute;
+    top: -14px;
+    left: 0;
+
+}
+.game{
+    margin-right: 20px !important;
+}
+#check{
+    background-color: #E57C23 ;
+    border: #F5EFE7 2px solid;
+}
+#check:hover{
+    background-color: #fff ;
+    color: #E57C23;
+    border: #E57C23 2px solid;
+}
+#submit{
+    margin-bottom: 60px;
+}
+@media (max-width: 768px) {
+    .title{
+        color: #F5EFE7;
+        letter-spacing: 1px;
+        margin-top: 0px;
+    }
+    #matrix .list{
+        background: #B31312;
+        border-radius: 10px;
+        height: 2.0em;
+        width: 2.0em;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: grab;
+        justify-content: center;
+        text-align: center;
+        font-size: 30px;
+    }
+    #five .kutu:first-child,
+    #four .kutu:first-child,
+    #three .kutu:first-child{
+        border-radius: 10px;
+        background: #1B9C85;
+        height: 40px !important;
+        width: 40px !important;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: grab;
+        justify-content: center;
+        text-align: center;
+    }   
+    #five .list,
+    #three .list,
+    #four .list{
+        border-radius: 10px;
+        background: #1B9C85;
+        height: 36px !important;
+        width: 36px !important;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: grab;
+        justify-content: center;
+        text-align: center;
+    }
+    #matrix
+    {
+        width: 300px;
+        height: 280px;
+        margin: 10px;
+        border: 4px solid #fff;
+    }
+    #title{
+        margin-top: 60px;
+    }
+    .kutu
+    {
+        border-radius: 10px;
+        border: 2px solid #fff;
+        height: 40px !important;
+        width: 40px !important;
+        padding: 0 !important;
+    }
+  }
