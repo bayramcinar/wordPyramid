@@ -45,7 +45,7 @@ body{
 #matrix
 {
     width: 350px;
-    height: 350px;
+    height: 345px;
     margin: 20px;
     border-radius: 10px;
     background-color: #068DA9;
@@ -241,7 +241,7 @@ body{
     #matrix
     {
         width: 300px;
-        height: 280px;
+        height: 270px;
         margin: 10px;
     }
     #title{
