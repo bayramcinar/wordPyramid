@@ -47,9 +47,60 @@ body{
     width: 350px;
     height: 350px;
     margin: 20px;
-    border: 4px solid #fff;
     border-radius: 10px;
     background-color: #068DA9;
+}
+#endMatrix{
+    width: 310px;
+    height: 600px;
+    border-radius: 10px;
+    background-color: #068DA9;
+    margin-left: auto;
+    margin-right: auto;
+}
+#totalWords,
+#fiveWords,
+#fourWords,
+#threeWords{
+    margin: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #F5EFE7;
+}
+#restart{
+    color: #F5EFE7;
+}
+.restartArea{
+    
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#totalPuan{
+    background-color: #4E3636;
+    width: 250px;
+    height: 50px ;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F5EFE7;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.wordsArea{
+    width: 250px;
+    height: 250px;
+    background-color: #1B9C85;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
 }
 #matrix .list{
     background: #B31312;
@@ -67,7 +118,6 @@ body{
     justify-content: center;
     text-align: center;
     font-size: 30px;
-    border: #F5EFE7 2px solid;
 }
 #five .list,
 #three .list,
@@ -128,12 +178,11 @@ body{
 }
 #check{
     background-color: #E57C23 ;
-    border: #F5EFE7 2px solid;
+    border: #E57C23 1px solid;
 }
 #check:hover{
     background-color: #fff ;
     color: #E57C23;
-    border: #E57C23 2px solid;
 }
 #submit{
     margin-bottom: 60px;
@@ -194,7 +243,6 @@ body{
         width: 300px;
         height: 280px;
         margin: 10px;
-        border: 4px solid #fff;
     }
     #title{
         margin-top: 60px;

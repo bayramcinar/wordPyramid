@@ -105,9 +105,9 @@
         <div class="container" id="submit">
             <div class="row">
                 <div class="container animate__animated animate__bounceInUp" style="margin-top: 15px;">
-                    <div class="btn btn-primary" id="check">CHECK !</div>
-                    <div class="btn btn-primary animate__animated animate__bounceInUp" id="next" style="display: none; margin-left: 15px; background-color: #525FE1 !important; border: #fff 1px solid;">NEXT</div>
-                    <button class="btn btn-primary animate__animated animate__bounceInUp" id="bitir" style="display: none; margin-left: 15px; background-color: #068DA9 !important; border: #fff 1px solid;">FINISH</button>
+                    <button class="btn btn-primary" id="check">CHECK !</button>
+                    <div class="btn btn-primary animate__animated animate__bounceInUp" id="next" style="display: none; margin-left: 15px; background-color: #525FE1 !important; border: #525FE1 1px solid;">NEXT</div>
+                    <button class="btn btn-primary animate__animated animate__bounceInUp" id="bitir" style="display: none; margin-left: 15px; background-color: #068DA9 !important; border: #068DA9 1px solid;">FINISH</button>
                 </div>
                 
             </div>
@@ -115,11 +115,24 @@
             
     </div>
 
-    <div class="end" style="display: none;">
-        <div class="container animate__animated animate__bounceInUp">
-            <div id="matrix">
-                <h1 id="totalPuan animate__animated animate__bounceInLeft" style="display: flex; align-items: center; justify-content: center; height: 30vh; color: #B31312 ;">TOTAL POINT:100</h1>
-                <div class="btn btn-warning animate__animated animate__fadeInRight" id="restart" style="justify-content: center; color: #fff; margin-left: auto; margin-right: auto; ">RESTART</div>
+    <div class="end" style="display: none; margin-left: auto; margin-right: auto;">
+        <div class="container animate__animated animate__bounceInUp" style="margin-right: 20px !important;">
+            <div id="endMatrix">
+                <div class="pointArea">
+                    <h1 id="totalPuan" class="animate__animated animate__bounceInLeft">TOTAL POINT:100</h1>
+                </div>
+                <div class="wordsArea">
+                    <div style="padding-top: 30px;">
+                        <h2 id="totalWords" style="background-color: #4E6E81; border-radius: 10px; padding: 10px;margin-bottom: 5px;">fsefesf</h2>
+                        <h2 id="fiveWords" style="background-color: #EB455F; border-radius: 10px; padding: 10px;margin-bottom: 5px;">efesfesf</h2>
+                        <h2 id="fourWords" style="background-color: #7DB9B6; border-radius: 10px; padding: 10px;margin-bottom: 5px;">fesfesf</h2>
+                        <h2 id="threeWords" style="background-color: #F273E6; border-radius: 10px; padding: 10px;margin-bottom: 5px;">fesfesfs</h2>
+                    </div>
+                </div>
+                <div class="restartArea">
+                    <div class="btn btn-warning animate__animated animate__fadeInRight" id="restart" >RESTART</div>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -165,52 +178,6 @@
             }
         });
         });
-    </script>
-    <script>
-        var startButton = document.querySelector("#basla");
-        var game = document.querySelector(".game");
-        var checkButton = document.getElementById("check");
-        var next = document.querySelector("#next");
-
-        startButton.addEventListener("click",function(){
-            geriyeSay();
-            startButton.style.display = "none";
-            game.style.display = "block";
-        });
-
-        var süre = 60;
-        var geriyeSayTimeout; 
-
-        function geriyeSay() {
-        var dakika = Math.floor(süre / 60);
-        var saniye = süre % 60;
-
-        dakika = dakika < 10 ? "0" + dakika : dakika;
-        saniye = saniye < 10 ? "0" + saniye : saniye;
-
-        document.getElementById("süre").textContent = dakika + ":" + saniye;
-        document.getElementById("süre").style.color = "white";
-        süre--;
-
-        if (süre >= 0) {
-            geriyeSayTimeout = setTimeout(geriyeSay, 1000);
-        } else {
-            document.getElementById("süre").textContent = "TIME IS OVER !";
-            checkButton.disabled = true;
-            next.style.display = "block";
-        }
-        }
-
-
-        document.getElementById("check").addEventListener("click", function() {
-        clearTimeout(geriyeSayTimeout); 
-        });
-
-        document.getElementById("next").addEventListener("click", function() {
-        süre = 60; 
-        geriyeSay(); 
-        });
-
     </script>
     <script>
         var restartButton = document.getElementById("restart");
