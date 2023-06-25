@@ -158,7 +158,6 @@ for (let a of lists) {
 }
 
 check.addEventListener("click", function() {
-  
   if(tıklamaSayısı >= 6){
     next.style.display = "none";
     finish.style.display = "block";
@@ -186,6 +185,82 @@ check.addEventListener("click", function() {
       var harf = kutu.textContent;
       checkWordThree += harf;
     }
+    if(fiveWord !== checkWordFive){
+      var lists = document.querySelector("#matrix").querySelectorAll(".list");
+      for (var k = 0; k < lists.length; k++) {
+        lists[k].remove();
+      }
+      for(let i = 1;i<fiveWord.length;i++){
+        var lettersFalse = document.querySelector("#five").getElementsByClassName("kutu")[i].querySelector(".list");
+        try{
+          lettersFalse.textContent=fiveWord[i];
+          lettersFalse.style.backgroundColor = "#B31312";
+          var lists = document.querySelectorAll(".list");
+        
+        }catch{
+          var kutuElement = document.querySelector("#five").getElementsByClassName("kutu")[i];
+          var listDiv = document.createElement("div"); 
+          listDiv.className = "list"; 
+          kutuElement.appendChild(listDiv); 
+          var lettersFalse = document.querySelector("#five").getElementsByClassName("kutu")[i].querySelector(".list");
+          lettersFalse.textContent=fiveWord[i];
+          lettersFalse.style.backgroundColor = "#B31312";
+          
+        }
+        
+      }
+    }
+    
+    if(fourWord !== checkWordFour){
+      var lists = document.querySelector("#matrix").querySelectorAll(".list");
+      for (var k = 0; k < lists.length; k++) {
+        lists[k].remove();
+      }
+      for(let i = 1;i<fourWord.length;i++){
+        var lettersFalse = document.querySelector("#four").getElementsByClassName("kutu")[i].querySelector(".list");
+        try{
+          lettersFalse.textContent=fourWord[i];
+          lettersFalse.style.backgroundColor = "#B31312";
+          
+        }catch{
+          var kutuElement = document.querySelector("#four").getElementsByClassName("kutu")[i];
+          var listDiv = document.createElement("div"); 
+          listDiv.className = "list"; 
+          kutuElement.appendChild(listDiv); 
+          var lettersFalse = document.querySelector("#four").getElementsByClassName("kutu")[i].querySelector(".list");
+          lettersFalse.textContent=fourWord[i];
+          lettersFalse.style.backgroundColor = "#B31312";
+          
+        }
+        
+      }
+    }
+
+    if(threeWord !== checkWordThree){
+      var lists = document.querySelector("#matrix").querySelectorAll(".list");
+      for (var k = 0; k < lists.length; k++) {
+        lists[k].remove();
+      }
+      for(let i = 1;i<threeWord.length;i++){
+        var lettersFalse = document.querySelector("#three").getElementsByClassName("kutu")[i].querySelector(".list");
+        try{
+          lettersFalse.textContent=threeWord[i];
+          lettersFalse.style.backgroundColor = "#B31312";
+          
+        }catch{
+          var kutuElement = document.querySelector("#three").getElementsByClassName("kutu")[i];
+          var listDiv = document.createElement("div"); 
+          listDiv.className = "list"; 
+          kutuElement.appendChild(listDiv); 
+          var lettersFalse = document.querySelector("#three").getElementsByClassName("kutu")[i].querySelector(".list");
+          lettersFalse.textContent=threeWord[i];
+          lettersFalse.style.backgroundColor = "#B31312";
+          
+        }
+        
+      }
+    }
+    
     if (fiveWord === checkWordFive && fourWord === checkWordFour && threeWord === checkWordThree) {
 
       wrongImgFive.style.display = "none";
@@ -206,7 +281,7 @@ check.addEventListener("click", function() {
       toplamKelime+=3;
       point+=100;
     } else if(fiveWord !== checkWordFive && fourWord === checkWordFour && threeWord === checkWordThree) {
-      
+
       wrongImgFive.style.display = "none";
       wrongImgFour.style.display = "none";
       wrongImgThree.style.display = "none";
@@ -219,6 +294,7 @@ check.addEventListener("click", function() {
       correctImgFour.style.display = "block";
       correctImgThree.style.display = "block";
 
+           
       numberThree+=1;
       numberFour+=1;
       toplamKelime+=2;
@@ -312,6 +388,9 @@ check.addEventListener("click", function() {
       point+=40;
     }
     else if(fiveWord !== checkWordFive && fourWord !== checkWordFour && threeWord !== checkWordThree) {
+
+
+
       wrongImgFive.style.display = "none";
       wrongImgFour.style.display = "none";
       wrongImgThree.style.display = "none";
@@ -536,168 +615,255 @@ if (süre >= 0) {
     document.getElementById("süre").textContent = "TIME IS OVER !";
     checkButton.disabled = true;
     next.style.display = "block";
-    var checkWordFive = "";
-    var checkWordFour = "";
-    var checkWordThree = "";
-    var Fivekutular = document.querySelector("#five").querySelectorAll(".kutu");
-    var Fourkutular = document.querySelector("#four").querySelectorAll(".kutu");
-    var Threekutular = document.querySelector("#three").querySelectorAll(".kutu");
-
-    for (kutu of Fivekutular) {
-      var harf = kutu.textContent;
-      checkWordFive += harf;
-    }
-    for (kutu of Fourkutular) {
-      var harf = kutu.textContent;
-      checkWordFour += harf;
-    }
-    for (kutu of Threekutular) {
-      var harf = kutu.textContent;
-      checkWordThree += harf;
-    }
-    if (fiveWord === checkWordFive && fourWord === checkWordFour && threeWord === checkWordThree) {
-
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      correctImgFive.style.display = "block";
-      correctImgFour.style.display = "block";
-      correctImgThree.style.display = "block";
-
-      numberThree+=1;
-      numberFour+=1;
-      numberFive+=1;
-      toplamKelime+=3;
-      point+=100;
-    } else if(fiveWord !== checkWordFive && fourWord === checkWordFour && threeWord === checkWordThree) {
+    if(tıklamaSayısı >= 6){
+      next.style.display = "none";
+      finish.style.display = "block";
       
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      wrongImgFive.style.display = "block";
-      correctImgFour.style.display = "block";
-      correctImgThree.style.display = "block";
-
-      numberThree+=1;
-      numberFour+=1;
-      toplamKelime+=2;
-      point+=56;
     }
-    else if(fiveWord === checkWordFive && fourWord !== checkWordFour && threeWord === checkWordThree) {
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      correctImgFive.style.display = "block";
-      wrongImgFour.style.display = "block";
-      correctImgThree.style.display = "block";
-
-      numberThree+=1;
-      numberFive+=1;
-      toplamKelime+=2;
-      point+=64;
-    }
-    else if(fiveWord === checkWordFive && fourWord === checkWordFour && threeWord !== checkWordThree) {
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      correctImgFive.style.display = "block";
-      correctImgFour.style.display = "block";
-      wrongImgThree.style.display = "block";
-
-      numberFour+=1;
-      numberFive+=1;
-      toplamKelime+=2;
-      point+=72;
-    }
-    else if(fiveWord !== checkWordFive && fourWord !== checkWordFour && threeWord === checkWordThree) {
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      wrongImgFive.style.display = "block";
-      wrongImgFour.style.display = "block";
-      correctImgThree.style.display = "block";
-
-      numberThree+=1;
-      toplamKelime+=1;
-      point+=24;
-    }
-    else if(fiveWord !== checkWordFive && fourWord === checkWordFour && threeWord !== checkWordThree) {
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      wrongImgFive.style.display = "block";
-      correctImgFour.style.display = "block";
-      wrongImgThree.style.display = "block";
-
-      numberFour+=1;
-      toplamKelime+=1;
-      point+=32;
-    }
-    else if(fiveWord === checkWordFive && fourWord !== checkWordFour && threeWord !== checkWordThree) {
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      correctImgFive.style.display = "block";
-      wrongImgFour.style.display = "block";
-      wrongImgThree.style.display = "block";
-
-      numberFive+=1;
-      toplamKelime+=1;
-      point+=40;
-    }
-    else if(fiveWord !== checkWordFive && fourWord !== checkWordFour && threeWord !== checkWordThree) {
-      wrongImgFive.style.display = "none";
-      wrongImgFour.style.display = "none";
-      wrongImgThree.style.display = "none";
-
-      correctImgFive.style.display = "none";
-      correctImgFour.style.display = "none";
-      correctImgThree.style.display = "none";
-
-      wrongImgFive.style.display = "block";
-      wrongImgFour.style.display = "block";
-      wrongImgThree.style.display = "block";
-
-      toplamKelime+=0;
-      point+=0;
-    }
-    puan.innerHTML = "PUAN: "+point;
-    
+    else{
+      next.style.display = "block";
+    }  
+      var checkWordFive = "";
+      var checkWordFour = "";
+      var checkWordThree = "";
+      var Fivekutular = document.querySelector("#five").querySelectorAll(".kutu");
+      var Fourkutular = document.querySelector("#four").querySelectorAll(".kutu");
+      var Threekutular = document.querySelector("#three").querySelectorAll(".kutu");
+  
+      for (kutu of Fivekutular) {
+        var harf = kutu.textContent;
+        checkWordFive += harf;
+      }
+      for (kutu of Fourkutular) {
+        var harf = kutu.textContent;
+        checkWordFour += harf;
+      }
+      for (kutu of Threekutular) {
+        var harf = kutu.textContent;
+        checkWordThree += harf;
+      }
+      if(fiveWord !== checkWordFive){
+        var lists = document.querySelector("#matrix").querySelectorAll(".list");
+        for (var k = 0; k < lists.length; k++) {
+          lists[k].remove();
+        }
+        for(let i = 1;i<fiveWord.length;i++){
+          var lettersFalse = document.querySelector("#five").getElementsByClassName("kutu")[i].querySelector(".list");
+          try{
+            lettersFalse.textContent=fiveWord[i];
+            lettersFalse.style.backgroundColor = "#B31312";
+            var lists = document.querySelectorAll(".list");
+          
+          }catch{
+            var kutuElement = document.querySelector("#five").getElementsByClassName("kutu")[i];
+            var listDiv = document.createElement("div"); 
+            listDiv.className = "list"; 
+            kutuElement.appendChild(listDiv); 
+            var lettersFalse = document.querySelector("#five").getElementsByClassName("kutu")[i].querySelector(".list");
+            lettersFalse.textContent=fiveWord[i];
+            lettersFalse.style.backgroundColor = "#B31312";
+            
+          }
+          
+        }
+      }
+      
+      if(fourWord !== checkWordFour){
+        var lists = document.querySelector("#matrix").querySelectorAll(".list");
+        for (var k = 0; k < lists.length; k++) {
+          lists[k].remove();
+        }
+        for(let i = 1;i<fourWord.length;i++){
+          var lettersFalse = document.querySelector("#four").getElementsByClassName("kutu")[i].querySelector(".list");
+          try{
+            lettersFalse.textContent=fourWord[i];
+            lettersFalse.style.backgroundColor = "#B31312";
+            
+          }catch{
+            var kutuElement = document.querySelector("#four").getElementsByClassName("kutu")[i];
+            var listDiv = document.createElement("div"); 
+            listDiv.className = "list"; 
+            kutuElement.appendChild(listDiv); 
+            var lettersFalse = document.querySelector("#four").getElementsByClassName("kutu")[i].querySelector(".list");
+            lettersFalse.textContent=fourWord[i];
+            lettersFalse.style.backgroundColor = "#B31312";
+            
+          }
+          
+        }
+      }
+  
+      if(threeWord !== checkWordThree){
+        var lists = document.querySelector("#matrix").querySelectorAll(".list");
+        for (var k = 0; k < lists.length; k++) {
+          lists[k].remove();
+        }
+        for(let i = 1;i<threeWord.length;i++){
+          var lettersFalse = document.querySelector("#three").getElementsByClassName("kutu")[i].querySelector(".list");
+          try{
+            lettersFalse.textContent=threeWord[i];
+            lettersFalse.style.backgroundColor = "#B31312";
+            
+          }catch{
+            var kutuElement = document.querySelector("#three").getElementsByClassName("kutu")[i];
+            var listDiv = document.createElement("div"); 
+            listDiv.className = "list"; 
+            kutuElement.appendChild(listDiv); 
+            var lettersFalse = document.querySelector("#three").getElementsByClassName("kutu")[i].querySelector(".list");
+            lettersFalse.textContent=threeWord[i];
+            lettersFalse.style.backgroundColor = "#B31312";
+            
+          }
+          
+        }
+      }
+      
+      if (fiveWord === checkWordFive && fourWord === checkWordFour && threeWord === checkWordThree) {
+  
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "block";
+        correctImgFour.style.display = "block";
+        correctImgThree.style.display = "block";
+  
+        numberThree+=1;
+        numberFour+=1;
+        numberFive+=1;
+        toplamKelime+=3;
+        point+=100;
+      } else if(fiveWord !== checkWordFive && fourWord === checkWordFour && threeWord === checkWordThree) {
+  
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        wrongImgFive.style.display = "block";
+        correctImgFour.style.display = "block";
+        correctImgThree.style.display = "block";
+  
+             
+        numberThree+=1;
+        numberFour+=1;
+        toplamKelime+=2;
+        point+=56;
+      }
+      else if(fiveWord === checkWordFive && fourWord !== checkWordFour && threeWord === checkWordThree) {
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "block";
+        wrongImgFour.style.display = "block";
+        correctImgThree.style.display = "block";
+  
+        numberThree+=1;
+        numberFive+=1;
+        toplamKelime+=2;
+        point+=64;
+      }
+      else if(fiveWord === checkWordFive && fourWord === checkWordFour && threeWord !== checkWordThree) {
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "block";
+        correctImgFour.style.display = "block";
+        wrongImgThree.style.display = "block";
+  
+        numberFour+=1;
+        numberFive+=1;
+        toplamKelime+=2;
+        point+=72;
+      }
+      else if(fiveWord !== checkWordFive && fourWord !== checkWordFour && threeWord === checkWordThree) {
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        wrongImgFive.style.display = "block";
+        wrongImgFour.style.display = "block";
+        correctImgThree.style.display = "block";
+  
+        numberThree+=1;
+        toplamKelime+=1;
+        point+=24;
+      }
+      else if(fiveWord !== checkWordFive && fourWord === checkWordFour && threeWord !== checkWordThree) {
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        wrongImgFive.style.display = "block";
+        correctImgFour.style.display = "block";
+        wrongImgThree.style.display = "block";
+  
+        numberFour+=1;
+        toplamKelime+=1;
+        point+=32;
+      }
+      else if(fiveWord === checkWordFive && fourWord !== checkWordFour && threeWord !== checkWordThree) {
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "block";
+        wrongImgFour.style.display = "block";
+        wrongImgThree.style.display = "block";
+  
+        numberFive+=1;
+        toplamKelime+=1;
+        point+=40;
+      }
+      else if(fiveWord !== checkWordFive && fourWord !== checkWordFour && threeWord !== checkWordThree) {
+  
+  
+  
+        wrongImgFive.style.display = "none";
+        wrongImgFour.style.display = "none";
+        wrongImgThree.style.display = "none";
+  
+        correctImgFive.style.display = "none";
+        correctImgFour.style.display = "none";
+        correctImgThree.style.display = "none";
+  
+        wrongImgFive.style.display = "block";
+        wrongImgFour.style.display = "block";
+        wrongImgThree.style.display = "block";
+  
+        toplamKelime+=0;
+        point+=0;
+      }
+      puan.innerHTML = "PUAN: "+point;
 }
  }
 
