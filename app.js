@@ -22,10 +22,13 @@ var threeWordsNumber = document.querySelector("#threeWords");
 var fiveWords = ["CAHİL","HABER","FAHİŞ","KABAK","ZAFER","ZALİM","YAĞIŞ","VAKIF","ÜÇGEN","UÇMAK","TABAK","ŞAFAK","SABIR","RACON","PAKET","ÖĞLEN","OBRUK","NADAS","MADDE","JAPON","İBLİS","GALİP","FAKAT","CACIK","CAMCI","ABBAS","ÇABUK","DAİMA","EDEBİ","HACİM","JOKER","MACUN","NADİR"];
 var fourWords = ["BABA","CAMİ","DADI","FAİZ","ZAAF","YAMA","VADİ","ÜLKE","UÇAK","TAHT","ŞAİR","SAAT","RAKI","PANO","ÖDÜL","OCAK","NANE","MAAŞ","KAFA","JÖLE","IRAK","İADE","FAÇA","EBRU","GACI","HAİN","FAKS","JEST","IRAK","ÖDEV","PARA","UÇUK","ŞANS","ÜCRA"];
 var threeWords = ["CAM","ÇAM","DAĞ","MAÇ","ZAM","YAT","VAH","ÜTÜ","ULU","TAÇ","ŞAH","SAĞ","RAF","ÖLÜ","ODA","LAF","KAN","KAŞ","IRK","GAM","FAR","EGO","DAM","ÇAĞ","BAĞ","AÇI","ACI","ÇAP","ÇAN","ISI","NAM","RAY","ŞAP","VAN","ZAR"];
+
 var kalan = document.querySelector("#kalan");
 var next = document.querySelector("#next");
 var finish = document.querySelector("#bitir");
 var totalPuan = document.querySelector("#totalPuan");
+var highPuan = document.querySelector("#highPuan");
+var enYuksekSkor;
 var end = document.querySelector(".end");
 var fiveWord;
 var fourWord;
@@ -57,7 +60,13 @@ function selectRandomThreeWord() {
   threeWord = threeWords[randomIndex];
   threeWords.splice(randomIndex, 1); 
 }
-
+function setHighScore(score) {
+  localStorage.setItem('highScore', score);
+}
+function getHighScore() {
+  var highScore = localStorage.getItem('highScore');
+  return highScore ? parseInt(highScore) : 0;
+}
 finish.addEventListener("click", function(){
   totalPuan.textContent = "TOTAL POINT: "+point;
   totalWords.textContent = "KNOWN ALL WORDS: "+toplamKelime;
@@ -67,7 +76,18 @@ finish.addEventListener("click", function(){
   game.style.display = "none";
   startButton.style.display = "none";
   end.style.display = "flex";
+  enYuksekSkor = point;
+  var currentScore = point; 
+  var highScore = getHighScore(); 
+
+  if (currentScore > highScore) {
+    setHighScore(currentScore); 
+    highPuan.innerHTML = 'HIGH POINT: ' + currentScore;
+  } else {
+    highPuan.innerHTML = 'HIGH POINT: ' + highScore;
+  }
 });
+
 
 selectRandomFiveWord();
 selectRandomFourWord();
@@ -158,7 +178,8 @@ for (let a of lists) {
 }
 
 check.addEventListener("click", function() {
-  if(tıklamaSayısı >= 6){
+  checkButton.disabled = true;
+  if(tıklamaSayısı >= 11){
     next.style.display = "none";
     finish.style.display = "block";
     
@@ -411,13 +432,14 @@ check.addEventListener("click", function() {
 });
 
 next.addEventListener("click", function() {
+  checkButton.disabled = false;
   var lists = document.querySelectorAll(".list");
   for (var i = 0; i < lists.length; i++) {
     lists[i].remove();
   }
 
   tıklamaSayısı+=1;
-  kalan.innerHTML = "SORU: "+(tıklamaSayısı-1)+"/5";
+  kalan.innerHTML = "SORU: "+(tıklamaSayısı-1)+"/10";
   wrongImgFive.style.display = "none";
   wrongImgFour.style.display = "none";
   wrongImgThree.style.display = "none";
@@ -581,6 +603,7 @@ next.addEventListener("click", function() {
           }
       });
       });
+
 });
 
 var startButton = document.querySelector("#basla");
@@ -877,3 +900,23 @@ süre = 60;
 geriyeSay(); 
 });
 
+function getHighScore() {
+  var highScore = localStorage.getItem('highScore');
+  return highScore ? parseInt(highScore) : 0;
+}
+
+function setHighScore(totalPuan) {
+  localStorage.setItem('highScore', totalPuan);
+}
+
+function checkHighScore(totalPuan) {
+  var highScore = getHighScore();
+  if (totalPuan > highScore) {
+    setHighScore(totalPuan);
+    highPuan.innerHTML = 'HIGH POINT: ' + totalPuan;
+  } else {
+    highPuan.innerHTML = 'HIGH POINT: ' + highScore;
+  }
+}
+
+checkHighScore(totalPuan);
